@@ -5,11 +5,11 @@ research opportunities in one place. It has a REST API (Python and Flask), a MyS
 database and a simple frontend (HTML, CSS and JavaScript).
 
 - **Course:** CN, Assignment 1 (BS AI 5A, Fall 2026)
-- **Name:** YOUR NAME
+- **Name:** Wasiq Ahmed
 - **Reg. No:** P24-XXXX
 
 **GitHub Repository:**
-https://github.com/YOUR-USERNAME/research-opportunity-portal
+https://github.com/dedsec411/research-opportunity-portal
 
 **Demo video:**
 PASTE-YOUR-VIDEO-LINK-HERE
@@ -243,8 +243,3 @@ always use the right ID.
 | `python` is not recognized                    | Use `py` instead of `python` on Windows, or `python3` on macOS / Linux.    |
 | `externally-managed-environment` (pip error)  | Create a virtual environment first: `python3 -m venv venv`, then `source venv/bin/activate`, then repeat step 3. |
 | Port 5000 is already in use                   | On a Mac, switch off AirPlay Receiver (System Settings > General > AirDrop & Handoff), which uses port 5000. Otherwise set `PORT=5001` in `backend/.env`, change `5000` to `5001` in the `API_URL` line at the top of `frontend/script.js`, restart the server and open http://127.0.0.1:5001. |
-#   r e s e a r c h - o p p o r t u n i t y - p o r t a l  
- #   r e s e a r c h - o p p o r t u n i t y - p o r t a l  
- #   r e s e a r c h - o p p o r t u n i t y - p o r t a l  
- #   r e s e a r c h - o p p o r t u n i t y - p o r t a l  
- 
