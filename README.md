@@ -6,7 +6,7 @@ database and a simple frontend (HTML, CSS and JavaScript).
 
 - **Course:** CN, Assignment 1 (BS AI 5A, Fall 2026)
 - **Name:** Wasiq Ahmed
-- **Reg. No:** P24-XXXX
+- **Reg. No:** P24-0010
 
 **GitHub Repository:**
 https://github.com/dedsec411/research-opportunity-portal
