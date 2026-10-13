@@ -11,9 +11,6 @@ database and a simple frontend (HTML, CSS and JavaScript).
 **GitHub Repository:**
 https://github.com/dedsec411/research-opportunity-portal
 
-**Demo video:**
-PASTE-YOUR-VIDEO-LINK-HERE
-
 ## Features
 
 - Post a new research opportunity through a form
