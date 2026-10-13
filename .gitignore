@@ -1,0 +1,22 @@
+# Private settings (MySQL password) - must never be uploaded
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large files that belong in the submission ZIP, not in the repository
+*.zip
+*.mp4
+*.mkv
+*.mov
+*.webm
+*.avi
