@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Opportunity Portal</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1>Research Opportunity Portal</h1>
+      <p>Post and manage research openings for students in one place.</p>
+    </div>
+  </header>
+
+  <div id="message" class="message hidden" role="status" aria-live="polite"></div>
+
+  <main class="layout">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2 id="form-title">Post a new opportunity</h2>
+        <p class="hint">All fields are required.</p>
+      </div>
+
+      <form id="opportunity-form" class="form-grid" novalidate>
+        <div class="field full">
+          <label for="title">Research title</label>
+          <input type="text" id="title" name="title" maxlength="200">
+        </div>
+
+        <div class="field">
+          <label for="faculty_name">Faculty member</label>
+          <input type="text" id="faculty_name" name="faculty_name" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="department">Department</label>
+          <input type="text" id="department" name="department" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="research_area">Research area</label>
+          <input type="text" id="research_area" name="research_area" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="available_positions">Available positions</label>
+          <input type="number" id="available_positions" name="available_positions" min="1" max="1000" step="1">
+        </div>
+
+        <div class="field full">
+          <label for="required_skills">Required skills</label>
+          <input type="text" id="required_skills" name="required_skills" maxlength="255" placeholder="e.g. Python, Machine Learning">
+        </div>
+
+        <div class="field">
+          <label for="application_deadline">Application deadline</label>
+          <input type="date" id="application_deadline" name="application_deadline" max="9999-12-31">
+        </div>
+
+        <div class="field">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="description">Research description</label>
+          <textarea id="description" name="description" rows="3" maxlength="2000"></textarea>
+        </div>
+
+        <div class="form-buttons full">
+          <button type="submit" id="save-button" class="btn btn-primary">Post opportunity</button>
+          <button type="button" id="cancel-button" class="btn hidden">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <div>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>All opportunities</h2>
+          <form id="search-form" class="search" novalidate>
+            <label for="search-id">Find by ID</label>
+            <input type="number" id="search-id" min="1" step="1">
+            <button type="submit" class="btn">Search</button>
+          </form>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Research title and faculty member</th>
+                <th>Deadline</th>
+                <th>Positions</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="opportunity-list"></tbody>
+          </table>
+        </div>
+        <p id="empty-note" class="hint hidden">No opportunities have been posted yet. Use the form to post the first one.</p>
+      </section>
+
+      <section id="details" class="panel hidden"></section>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
