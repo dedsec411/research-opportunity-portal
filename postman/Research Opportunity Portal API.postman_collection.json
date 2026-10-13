@@ -1,0 +1,519 @@
+{
+  "info": {
+    "_postman_id": "7f979e6b-0b05-4c79-a15a-dfc16f854b0f",
+    "name": "Research Opportunity Portal API",
+    "description": "Tests for the Research Opportunity Portal REST API.\n\nStart the backend first (python app.py), then send the requests from top to bottom. The three Create requests save the new IDs in the collection variables first_id, second_id and third_id, and the later requests use those IDs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58930585",
+    "_collection_link": "https://go.postman.co/collection/58930585-7f979e6b-0b05-4c79-a15a-dfc16f854b0f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1a. Create opportunity 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"first_id\", pm.response.json().opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Urdu Speech Recognition using Deep Learning\",\n  \"description\": \"Build and evaluate a speech-to-text model for Urdu using open datasets.\",\n  \"research_area\": \"Natural Language Processing\",\n  \"faculty_name\": \"Dr. Ayesha Khan\",\n  \"department\": \"Artificial Intelligence\",\n  \"required_skills\": \"Python, PyTorch, Signal Processing\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2026-11-30\",\n  \"status\": \"Open\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Creates the first research opportunity. Expected: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "1b. Create opportunity 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"second_id\", pm.response.json().opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Smart Traffic Monitoring with Computer Vision\",\n  \"description\": \"Detect and count vehicles from CCTV footage to study traffic flow in Peshawar.\",\n  \"research_area\": \"Computer Vision\",\n  \"faculty_name\": \"Dr. Bilal Ahmed\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, OpenCV, YOLO\",\n  \"available_positions\": 3,\n  \"application_deadline\": \"2026-12-15\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Creates the second research opportunity. No status is sent, so the API saves it as Open. Expected: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "1c. Create opportunity 3",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"third_id\", pm.response.json().opportunity.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"IoT-Based Air Quality Monitoring\",\n  \"description\": \"Design low-cost sensor nodes that report air quality readings to an online dashboard.\",\n  \"research_area\": \"Internet of Things\",\n  \"faculty_name\": \"Dr. Sara Malik\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"Arduino, C++, Sensors, Data Analysis\",\n  \"available_positions\": 1,\n  \"application_deadline\": \"2026-11-20\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Creates the third research opportunity. Expected: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Get all opportunities",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"At least three opportunities are returned\", function () {",
+              "    pm.expect(pm.response.json().length).to.be.at.least(3);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Returns every research opportunity stored in the database. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get one opportunity by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"The complete opportunity is returned\", function () {",
+              "    pm.expect(pm.response.json()).to.have.property(\"title\");",
+              "    pm.expect(pm.response.json()).to.have.property(\"application_deadline\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/opportunities/{{first_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{first_id}}"
+          ]
+        },
+        "description": "Returns the complete details of opportunity 1 using its ID. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update an opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"The new values are saved\", function () {",
+              "    const opportunity = pm.response.json().opportunity;",
+              "    pm.expect(opportunity.title).to.eql(\"Urdu Speech Recognition using Transformers\");",
+              "    pm.expect(opportunity.available_positions).to.eql(4);",
+              "    pm.expect(opportunity.application_deadline).to.eql(\"2026-12-10\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Urdu Speech Recognition using Transformers\",\n  \"required_skills\": \"Python, PyTorch, Transformers\",\n  \"available_positions\": 4,\n  \"application_deadline\": \"2026-12-10\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities/{{first_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{first_id}}"
+          ]
+        },
+        "description": "Changes the title, required skills, available positions and deadline of opportunity 1. Fields that are not sent keep their saved values. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Close an opportunity (Open to Closed)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Status is now Closed\", function () {",
+              "    pm.expect(pm.response.json().opportunity.status).to.eql(\"Closed\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities/{{second_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{second_id}}"
+          ]
+        },
+        "description": "Changes the status of opportunity 2 from Open to Closed. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Delete an opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/opportunities/{{third_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{third_id}}"
+          ]
+        },
+        "description": "Deletes opportunity 3. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Get the deleted opportunity (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 404 Not Found\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/opportunities/{{third_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{third_id}}"
+          ]
+        },
+        "description": "Asks for opportunity 3 again after it was deleted. Expected: 404 Not Found."
+      },
+      "response": []
+    },
+    {
+      "name": "8a. Create with missing fields (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400 Bad Request\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"The response lists what is wrong\", function () {",
+              "    pm.expect(pm.response.json().details).to.include(\"description is required\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Opportunity with missing fields\",\n  \"faculty_name\": \"Dr. Ayesha Khan\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Sends a request with most of the required fields missing. Expected: 400 Bad Request with a list of problems."
+      },
+      "response": []
+    },
+    {
+      "name": "8b. Create with invalid values (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400 Bad Request\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"All three problems are reported\", function () {",
+              "    pm.expect(pm.response.json().details.length).to.eql(3);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Opportunity with invalid values\",\n  \"description\": \"Design low-cost sensor nodes that report air quality readings to an online dashboard.\",\n  \"research_area\": \"Internet of Things\",\n  \"faculty_name\": \"Dr. Sara Malik\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"Arduino, C++, Sensors, Data Analysis\",\n  \"available_positions\": -5,\n  \"application_deadline\": \"31-12-2026\",\n  \"status\": \"Maybe\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/opportunities",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Sends a negative number of positions, a deadline in the wrong format and an unknown status. Expected: 400 Bad Request with a list of problems."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000"
+    },
+    {
+      "key": "first_id",
+      "value": "1"
+    },
+    {
+      "key": "second_id",
+      "value": "2"
+    },
+    {
+      "key": "third_id",
+      "value": "3"
+    }
+  ]
+}
