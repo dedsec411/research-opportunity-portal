@@ -1,0 +1,5 @@
+Flask>=2.2
+flask-cors
+python-dotenv
+PyMySQL
+cryptography    # used by PyMySQL to log in to MySQL 8 with a password
